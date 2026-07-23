@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo | Bus Booking System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top custom-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-3" href="/">
+            🚌 TravelGo
+        </a>
+
+            <li class="nav-item">
+                    <a href="/my-bookings" class="btn btn-success">
+                     My Bookings
+                    </a>
+            </li>
+
+       
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/offers">Offers</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/help">Help</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+
+            </ul>
+            <div class="d-flex align-items-center">
+
+{% if session.get("user_name") %}
+
+    <span class="text-white me-3">
+        👋 Welcome, {{ session["user_name"] }}
+    </span>
+
+    <a href="/logout" class="btn btn-warning">
+        Logout
+    </a>
+
+{% else %}
+
+    <a href="/login" class="btn btn-outline-light me-2">
+        Login
+    </a>
+
+    <a href="/register" class="btn btn-warning">
+        Register
+    </a>
+
+{% endif %}
+
+</div>
+            
+            
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ===================== HERO ===================== -->
+
+<section class="hero-section">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="hero-tag">
+                    India's Trusted Bus Booking Platform
+                </span>
+
+                <h1 class="hero-title mt-3">
+
+                    Book Comfortable Bus Tickets Across India
+
+                </h1>
+
+                <p class="hero-subtitle mt-4">
+
+                    Compare prices, choose your preferred seats,
+                    and enjoy a safe, reliable journey with
+                    premium bus operators.
+
+                </p>
+
+                <div class="hero-stats mt-5">
+
+                    <div class="stat-box">
+
+                        <h3>500+</h3>
+                        <p>Routes</p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h3>1000+</h3>
+                        <p>Buses</p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h3>5M+</h3>
+                        <p>Happy Travellers</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 d-none d-lg-block text-center">
+
+                <img src="{{ url_for('static', filename='images/hero-bus.jpg') }}"
+                     class="img-fluid hero-image"
+                     alt="Bus">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================== SEARCH ===================== -->
+
+<section class="search-section">
+
+    <div class="container">
+
+        <div class="search-card shadow-lg">
+
+            <h2 class="text-center mb-4">
+                Search Your Bus
+            </h2>
+
+            <form action="/" method="POST">
+
+                <div class="row g-4">
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            From
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="source"
+                            class="form-control form-control-lg"
+                            placeholder="Enter Source"
+                            required>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            To
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="destination"
+                            class="form-control form-control-lg"
+                            placeholder="Enter Destination"
+                            required>
+
+                    </div>
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+
+                            Journey Date
+
+                        </label>
+
+                        <input
+                            type="date"
+                            name="journey_date"
+                            class="form-control form-control-lg"
+                            required>
+
+                    </div>
+
+                    <div class="col-lg-3 d-flex align-items-end">
+
+                        <button
+                            type="submit"
+                            class="btn search-btn w-100 btn-lg">
+
+                            🔍 Search Buses
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================== POPULAR ROUTES ===================== -->
+
+<section class="popular-routes py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+
+                Popular Routes
+
+            </h2>
+
+            <p class="section-subtitle">
+
+                Most booked routes by travellers
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="route-card">
+
+                    <h5>Pune → Mumbai</h5>
+
+                    <small>45+ Daily Services</small>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="route-card">
+
+                    <h5>Mumbai → Goa</h5>
+
+                    <small>30+ Daily Services</small>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="route-card">
+
+                    <h5>Pune → Nagpur</h5>
+
+                    <small>20+ Daily Services</small>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="route-card">
+
+                    <h5>Hyderabad → Bengaluru</h5>
+
+                    <small>50+ Daily Services</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Response 2 will continue from here with:
+1. Why Choose TravelGo
+2. Available Bus Cards
+3. Footer
+4. Bootstrap JS -->
+<!-- ================= WHY CHOOSE TRAVELGO ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Why Choose TravelGo
+            </h2>
+
+            <p class="section-subtitle">
+                Travel with confidence and comfort
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🚌
+                    </div>
+
+                    <h4>500+ Bus Operators</h4>
+
+                    <p>
+                        Book from trusted operators across India.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        💳
+                    </div>
+
+                    <h4>Secure Payments</h4>
+
+                    <p>
+                        Safe online payment with multiple options.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🎧
+                    </div>
+
+                    <h4>24×7 Support</h4>
+
+                    <p>
+                        Customer support whenever you need it.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⭐
+                    </div>
+
+                    <h4>Highly Rated</h4>
+
+                    <p>
+                        Millions of happy travellers trust TravelGo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= AVAILABLE BUSES ================= -->
+
+<section class="available-buses py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Available Buses
+            </h2>
+
+            <p class="section-subtitle">
+                Select the best bus for your journey
+            </p>
+
+        </div>
+
+        {% if buses %}
+
+        {% for bus in buses %}
+
+        <div class="bus-card mb-4">
+
+            <div class="row align-items-center">
+
+                <!-- Bus Information -->
+
+                <div class="col-lg-3">
+
+                    <h4 class="bus-name">
+
+                        {{ bus[1] }}
+
+                    </h4>
+
+                    <p class="bus-type">
+
+                        {{ bus[8] }}
+
+                    </p>
+
+                    <span class="rating-badge">
+
+                        ⭐ {{ bus[9] }}
+
+                    </span>
+
+                </div>
+
+                <!-- Timing -->
+
+                <div class="col-lg-5">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <h5>{{ bus[4] }}</h5>
+
+                            <small>{{ bus[2] }}</small>
+
+                        </div>
+
+                        <div class="text-center">
+
+                            <small>{{ bus[10] }}</small>
+
+                            <hr>
+
+                            <small>Direct</small>
+
+                        </div>
+
+                        <div>
+
+                            <h5>{{ bus[5] }}</h5>
+
+                            <small>{{ bus[3] }}</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Price -->
+
+                <div class="col-lg-2 text-center">
+
+                    <h3 class="price">
+
+                        ₹₹{{ bus[6] }}
+
+                    </h3>
+
+                    <small>
+
+                        {{ bus[7] }} Seats Left
+
+                    </small>
+
+                </div>
+
+                <!-- Button -->
+
+                <div class="col-lg-2 text-center">
+
+                   <a href="{{ url_for('bus_details',
+                    bus_id=bus[0],
+                    journey_date=journey_date) }}"
+                    class="btn btn-danger px-4 py-2">
+
+                   View Seats
+
+                  </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        <div class="alert alert-warning text-center">
+
+            No buses found.
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4">
+
+                <h3>🚌 TravelGo</h3>
+
+                <p>
+
+                    India's trusted online bus ticket booking platform.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <h5>Company</h5>
+
+                <ul class="list-unstyled">
+
+                    <li>About</li>
+                    <li>Careers</li>
+                    <li>Contact</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Support</h5>
+
+                <ul class="list-unstyled">
+
+                    <li>Help Center</li>
+                    <li>FAQs</li>
+                    <li>Privacy Policy</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Follow Us</h5>
+
+                <p>
+
+                    Facebook • Instagram • LinkedIn
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="text-center mb-0">
+
+            © 2026 TravelGo. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

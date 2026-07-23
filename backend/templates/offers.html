@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TravelGo | Offers</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+body{
+    background:#f5f7fb;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.navbar{
+    background:#0b2948;
+}
+
+.navbar-brand{
+    font-size:28px;
+    font-weight:bold;
+    color:#fff !important;
+}
+
+.nav-link{
+    color:white !important;
+    margin-left:15px;
+    font-weight:500;
+}
+
+.nav-link:hover{
+    color:#FFD54F !important;
+}
+
+.hero{
+
+    background:linear-gradient(rgba(0,0,0,.55),
+    rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?w=1600");
+
+    background-size:cover;
+    background-position:center;
+
+    height:420px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:55px;
+    font-weight:700;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    margin-top:15px;
+
+}
+
+.hero button{
+
+    margin-top:25px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    background:#ff5722;
+
+    color:white;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.hero button:hover{
+
+    background:#e64a19;
+
+    transform:scale(1.05);
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-top:70px;
+
+    margin-bottom:40px;
+
+    font-weight:bold;
+
+    color:#0b2948;
+
+}
+
+.offer-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+}
+
+.offer-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.offer-top{
+
+    background:linear-gradient(135deg,#ff512f,#dd2476);
+
+    color:white;
+
+    padding:25px;
+
+}
+
+.offer-top h3{
+
+    font-weight:bold;
+
+}
+
+.offer-body{
+
+    padding:25px;
+
+}
+
+.coupon{
+
+    display:inline-block;
+
+    background:#f1f1f1;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    color:#ff5722;
+
+    margin:15px 0;
+
+}
+
+.book-btn{
+
+    width:100%;
+
+    background:#0b2948;
+
+    color:white;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.book-btn:hover{
+
+    background:#ff5722;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand" href="/">
+<i class="fa-solid fa-bus"></i>
+TravelGo
+</a>
+
+<button class="navbar-toggler bg-white"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#nav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse"
+id="nav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="/">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="/offers">Offers</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/my-bookings">My Bookings</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div>
+
+<h1>Travel More. Spend Less.</h1>
+
+<p>
+Exclusive Bus Offers & Cashback Deals
+</p>
+
+<button>
+
+Book Your Journey
+
+</button>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+🔥 Exclusive Travel Offers
+
+</h2>
+
+<div class="row">
+
+    <div class="col-lg-4 mb-4">
+
+    <div class="offer-card">
+
+        <div class="offer-top">
+
+            <h3>🎉 First Booking Offer</h3>
+
+            <h5>50% OFF up to ₹300</h5>
+
+        </div>
+
+        <div class="offer-body">
+
+            <p>
+                Applicable for new users on their first booking.
+            </p>
+
+            <div class="coupon">
+                FIRST50
+            </div>
+
+            <button class="book-btn">
+                Book Now
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="col-lg-4 mb-4">
+
+    <div class="offer-card">
+
+        <div class="offer-top"
+             style="background:linear-gradient(135deg,#2193b0,#6dd5ed);">
+
+            <h3>🚍 Weekend Special</h3>
+
+            <h5>20% OFF</h5>
+
+        </div>
+
+        <div class="offer-body">
+
+            <p>
+                Travel every Friday, Saturday and Sunday with extra savings.
+            </p>
+
+            <div class="coupon">
+                WEEKEND20
+            </div>
+
+            <button class="book-btn">
+                Book Now
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="col-lg-4 mb-4">
+
+    <div class="offer-card">
+
+        <div class="offer-top"
+             style="background:linear-gradient(135deg,#11998e,#38ef7d);">
+
+            <h3>🎓 Student Discount</h3>
+
+            <h5>15% OFF</h5>
+
+        </div>
+
+        <div class="offer-body">
+
+            <p>
+                Valid student ID required during boarding.
+            </p>
+
+            <div class="coupon">
+                STUDENT15
+            </div>
+
+            <button class="book-btn">
+                Book Now
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+💳 Bank Offers
+</h2>
+
+<div class="row">
+
+<div class="col-md-3 mb-4">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<h3>🏦 SBI</h3>
+
+<h5 class="text-success">
+10% Cashback
+</h5>
+
+<p>
+Use SBI Credit Card and save up to ₹500.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-4">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<h3>💳 HDFC</h3>
+
+<h5 class="text-success">
+15% Cashback
+</h5>
+
+<p>
+Valid on Debit & Credit Cards.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-4">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<h3>🏛 ICICI</h3>
+
+<h5 class="text-success">
+₹300 Instant Discount
+</h5>
+
+<p>
+Applicable on bookings above ₹1500.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3 mb-4">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<h3>📱 UPI</h3>
+
+<h5 class="text-success">
+Flat ₹100 OFF
+</h5>
+
+<p>
+Pay using any UPI app and save instantly.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<hr class="my-5">
+
+<h2 class="section-title">
+⭐ Why Choose TravelGo
+</h2>
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<h1>🚌</h1>
+
+<h4>5000+ Routes</h4>
+
+
+<p>
+Travel across India with trusted operators.
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h1>💳</h1>
+
+
+
+<h4>Secure Payments</h4>
+
+<p>
+100% secure online payment gateway.
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h1>📍</h1>
+
+<h4>Live Tracking</h4>
+
+<p>
+Track your bus in real time.
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h1>🎧</h1>
+
+<h4>24×7 Support</h4>
+
+<p>
+Customer support whenever you need it.
+</p>
+
+</div>
+
+</div>
+
+<hr class="my-5">
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h2 class="fw-bold text-primary">
+                    📱 Download the TravelGo App
+                </h2>
+
+                <p class="lead mt-3">
+                    Book bus tickets faster, track your journey live,
+                    receive instant notifications and enjoy exclusive
+                    app-only discounts.
+                </p>
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        ✅ Live Bus Tracking
+                    </li>
+
+                    <li class="list-group-item">
+                        ✅ Instant Ticket Booking
+                    </li>
+
+                    <li class="list-group-item">
+                        ✅ Secure Payments
+                    </li>
+
+                    <li class="list-group-item">
+                        ✅ Easy Cancellation & Refund
+                    </li>
+
+                </ul>
+
+                <div class="mt-4">
+
+                    <button class="btn btn-dark btn-lg me-2">
+                        <i class="fab fa-google-play"></i>
+                        Google Play
+                    </button>
+
+                    <button class="btn btn-secondary btn-lg">
+                        <i class="fab fa-apple"></i>
+                        App Store
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&auto=format&fit=crop"
+     class="img-fluid rounded-4 shadow"
+     alt="Luxury Bus">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="mt-5 text-white" style="background:#0b2948;">
+
+    <div class="container py-5">
+
+        <div class="row">
+
+            <div class="col-lg-4">
+
+                <h3>
+                    <i class="fa-solid fa-bus"></i>
+                    TravelGo
+                </h3>
+
+                <p class="mt-3">
+                    TravelGo is your trusted online bus booking platform,
+                    providing comfortable journeys, secure payments,
+                    and affordable fares across India.
+                </p>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <h5>Company</h5>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="/" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="/offers" class="text-white text-decoration-none">Offers</a></li>
+                    <li><a href="/contact" class="text-white text-decoration-none">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Support</h5>
+
+                <ul class="list-unstyled">
+
+                    <li>📧 chaitanya@travelgo.com</li>
+                    <li>📞 +91 8177955501</li>
+                    <li>🕒 24×7 Customer Support</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Follow Us</h5>
+
+                <div class="fs-3">
+
+                    <i class="fab fa-facebook me-3"></i>
+
+                    <i class="fab fa-instagram me-3"></i>
+
+                    <i class="fab fa-twitter me-3"></i>
+
+                    <i class="fab fa-linkedin"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="border-light">
+
+        <div class="text-center">
+
+            © 2026 TravelGo. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Passenger Details | TravelGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<section class="details-header">
+
+    <div class="container">
+
+        <a href="javascript:history.back()"
+           class="back-btn">
+
+            ← Back
+
+        </a>
+
+        <div class="details-card mt-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h2>{{ bus[1] }}</h2>
+
+                    <p class="bus-type">
+
+                        {{ bus[8] }}
+
+                    </p>
+
+                    <span class="rating-badge">
+
+                        ⭐ {{ bus[9] }}
+
+                    </span>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <h2 class="price">
+
+                        ₹{{ bus[6] }}
+
+                    </h2>
+
+                    <p>{{ bus[7] }} Seats Available</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row">
+
+<!-- ================= LEFT PANEL ================= -->
+
+<div class="col-lg-4">
+
+    <div class="booking-summary">
+
+        <h3 class="mb-4">
+
+            Journey Summary
+
+        </h3>
+
+        <div class="summary-item">
+
+            <span>Bus</span>
+
+            <strong>{{ bus[1] }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Route</span>
+
+            <strong>{{ bus[2] }} → {{ bus[3] }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Date</span>
+
+            <strong>{{ journey_date }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Departure</span>
+
+            <strong>{{ bus[4] }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Seats</span>
+
+            <strong>{{ seats | join(", ") }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Passengers</span>
+
+            <strong>{{ seats|length }}</strong>
+
+        </div>
+
+        <hr>
+
+        <div class="summary-item total">
+
+            <span>Total Fare</span>
+
+            <strong>
+
+                ₹{{ (bus[6] * seats|length) + 30 }} 
+
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= RIGHT PANEL ================= -->
+
+<div class="col-lg-8">
+
+<form method="POST" action="/payment">
+
+{% for seat in seats %}
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-danger text-white">
+
+        <h5 class="mb-0">
+
+            Passenger {{ loop.index }} (Seat {{ seat }})
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <input
+            type="hidden"
+            name="seat[]"
+            value="{{ seat }}">
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Full Name
+
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name[]"
+                    placeholder="Enter passenger name"
+                    required>
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Age
+
+                </label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    name="age[]"
+                    min="1"
+                    max="120"
+                    required>
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Gender
+
+                </label>
+
+                <select
+                    class="form-select"
+                    name="gender[]"
+                    required>
+
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+<!-- ================= CONTACT DETAILS ================= -->
+
+<div class="card shadow-sm">
+
+    <div class="card-header bg-dark text-white">
+
+        <h5 class="mb-0">
+
+            Contact Details
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Mobile Number
+
+            </label>
+
+            <input
+                type="tel"
+                class="form-control"
+                name="mobile"
+                placeholder="Enter mobile number"
+                required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Email Address
+
+            </label>
+
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="Enter email"
+                required>
+
+        </div>
+
+        <input
+            type="hidden"
+            name="bus_id"
+            value="{{ bus[0] }}">
+
+        <button
+            type="submit"
+            class="btn btn-danger btn-lg w-100">
+
+            Continue to Payment →
+
+        </button>
+
+    </div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

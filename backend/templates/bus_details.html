@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bus Details | TravelGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<section class="details-header">
+
+    <div class="container">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <a href="javascript:history.back()"
+               class="back-btn">
+
+                ← Back
+
+            </a>
+
+        </div>
+
+        <div class="details-card">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h2>
+
+                        {{ bus[1] }}
+
+                    </h2>
+
+                    <p class="bus-type">
+
+                        {{ bus[8] }}
+
+                    </p>
+
+                    <span class="rating-badge">
+
+                        ⭐ {{ bus[9] }}
+
+                    </span>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <h2 class="price">
+
+                        ₹{{ bus[6] }}
+
+                    </h2>
+
+                    <p>
+
+                        {{ bus[7] }} Seats Available
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Journey -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="journey-card">
+
+            <div class="row text-center">
+
+                <div class="col-md-4">
+
+                    <h3>
+
+                        {{ bus[2] }}
+
+                    </h3>
+
+                    <h5>
+
+                        {{ bus[4] }}
+
+                    </h5>
+
+                    <small>Boarding Point</small>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h4>
+
+                        {{ bus[10] }}
+
+                    </h4>
+
+                    <hr>
+
+                    <small>Non Stop</small>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h3>
+
+                        {{ bus[3] }}
+
+                    </h3>
+
+                    <h5>
+
+                        {{ bus[5] }}
+
+                    </h5>
+
+                    <small>Dropping Point</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Amenities -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <h3 class="mb-4">
+
+            Amenities
+
+        </h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="amenity-card">
+                    📶 WiFi
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="amenity-card">
+                    ❄ AC
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="amenity-card">
+                    🔌 Charging Point
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="amenity-card">
+                    💺 Recliner Seats
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Button -->
+
+<section class="pb-5 text-center">
+
+    <a href="/bus/{{ bus[0] }}/seats?journey_date={{ journey_date }}"
+   class="btn btn-danger btn-lg px-5">
+
+        Select Seats
+
+    </a>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Select Seat | TravelGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<section class="details-header">
+
+    <div class="container">
+
+        <a href="javascript:history.back()"
+           class="back-btn">
+
+            ← Back
+
+        </a>
+
+        <div class="details-card mt-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h2>{{ bus[1] }}</h2>
+
+                    <p class="bus-type">
+
+                        {{ bus[8] }}
+
+                    </p>
+
+                    <span class="rating-badge">
+
+                        ⭐ {{ bus[9] }}
+
+                    </span>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <h2 class="price">
+
+                       ₹{{ bus[6] }}
+
+                    </h2>
+
+                    <p>{{ bus[7] }} Seats Available</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row">
+
+<!-- LEFT -->
+
+<div class="col-lg-8">
+
+<div class="seat-container">
+
+<div class="driver-box">
+
+🚌 Driver
+
+</div>
+
+<div class="seat-grid">
+    <!-- Row A -->
+<div class="seat-row">
+    {% for seat in seats[0:4] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row B -->
+<div class="seat-row">
+    {% for seat in seats[4:8] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row C -->
+<div class="seat-row">
+    {% for seat in seats[8:12] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row D -->
+<div class="seat-row">
+    {% for seat in seats[12:16] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row E -->
+<div class="seat-row">
+    {% for seat in seats[16:20] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row F -->
+<div class="seat-row">
+    {% for seat in seats[20:24] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row G -->
+<div class="seat-row">
+    {% for seat in seats[24:28] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row H -->
+<div class="seat-row">
+    {% for seat in seats[28:32] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[6] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row I -->
+<div class="seat-row">
+    {% for seat in seats[32:36] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[7] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row J -->
+<div class="seat-row">
+    {% for seat in seats[36:40] %}
+        <div class="seat-wrapper {% if loop.index == 3 %}aisle{% endif %}">
+            <div
+                class="seat {% if seat[2] %}booked{% else %}available{% endif %}"
+                data-seat="{{ seat[1] }}"
+                data-price="{{ bus[7] }}"
+                {% if seat[2] %}data-booked="true"{% endif %}
+            >
+                {{ seat[1] }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+</div> <!-- seat-grid -->
+
+</div> <!-- seat-container -->
+
+</div> <!-- col-lg-8 -->
+
+<!-- ================= RIGHT PANEL ================= -->
+
+<div class="col-lg-4">
+
+    <div class="booking-summary">
+
+        <h3 class="mb-4">
+
+            Journey Summary
+
+        </h3>
+
+        <div class="summary-item">
+
+            <span>Bus</span>
+
+            <strong>{{ bus[1] }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Route</span>
+
+            <strong>{{ bus[2] }} → {{ bus[3] }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Date</span>
+
+            <strong>{{ journey_date }}</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Departure</span>
+
+            <strong>{{ bus[4] }}</strong>
+
+        </div>
+
+        <hr>
+
+        <h5>Selected Seat</h5>
+
+        <h3 id="selectedSeat">
+
+            None
+
+        </h3>
+
+        <hr>
+
+        <div class="summary-item">
+
+            <span>Ticket Price</span>
+
+            <strong>₹<span id="ticketPrice">{{ bus[6] }}</span></strong>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span>Convenience Fee</span>
+
+            <strong>₹30</strong>
+
+        </div>
+
+        <hr>
+
+        <div class="summary-item total">
+
+            <span>Total</span>
+
+            <strong>₹<span id="totalPrice">{{ bus[6] + 30 }}</span></strong>
+
+        </div>
+
+        <button
+            id="continueBtn"
+            class="btn btn-danger w-100 mt-4"
+            disabled>
+
+            Continue
+
+        </button>
+
+        <div class="seat-legend mt-4">
+
+            <div>
+
+                <span class="legend available"></span>
+
+                Available
+
+            </div>
+
+            <div>
+
+                <span class="legend booked"></span>
+
+                Booked
+
+            </div>
+
+            <div>
+
+                <span class="legend selected"></span>
+
+                Selected
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> <!-- booking-summary -->
+
+</div> <!-- col-lg-4 -->
+
+</div> <!-- row -->
+
+</div> <!-- container -->
+
+</section>
+
+<script>
+const seats = document.querySelectorAll(".seat.available");
+
+const seatText = document.getElementById("selectedSeat");
+const ticketPrice = document.getElementById("ticketPrice");
+const totalPrice = document.getElementById("totalPrice");
+const continueBtn = document.getElementById("continueBtn");
+
+const pricePerSeat = parseInt(document.querySelector(".seat.available").dataset.price);
+
+let selectedSeats = [];
+
+seats.forEach(seat => {
+
+    seat.addEventListener("click", () => {
+
+        const seatNo = seat.dataset.seat;
+
+        if (seat.classList.contains("selected-seat")) {
+
+            seat.classList.remove("selected-seat");
+            selectedSeats = selectedSeats.filter(s => s !== seatNo);
+
+        } else {
+
+            if (selectedSeats.length >= 6) {
+                alert("You can book a maximum of 6 seats.");
+                return;
+            }
+
+            seat.classList.add("selected-seat");
+            selectedSeats.push(seatNo);
+
+        }
+
+        if (selectedSeats.length === 0) {
+
+            seatText.innerHTML = "None";
+            ticketPrice.innerHTML = "0";
+            totalPrice.innerHTML = "0";
+            continueBtn.disabled = true;
+
+        } else {
+
+            seatText.innerHTML = selectedSeats.join(", ");
+
+            const fare = pricePerSeat * selectedSeats.length;
+
+            ticketPrice.innerHTML = fare;
+            totalPrice.innerHTML = fare + 30;
+
+            continueBtn.disabled = false;
+
+        }
+
+    });
+
+});
+
+continueBtn.addEventListener("click", () => {
+
+    window.location.href =
+        "/passenger-details?seats=" +
+        encodeURIComponent(selectedSeats.join(",")) +
+        "&bus={{ bus[0] }}";
+
+});
+</script>
+</body>
+
+</html>
