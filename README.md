@@ -159,25 +159,35 @@ travelgo-bus-booking-system/
 
 ------------------------------------------------------------------------
 
-# 📸 Screenshots
+## 📸 Project Screenshots
 
-Add screenshots of:
+### 🏠 Home Page
 
--   Home Page
--   Search Results
--   Bus Details
--   Seat Selection
--   Passenger Details
--   Payment
--   Booking Confirmation
--   My Bookings
--   Contact Us
+<img src="screenshots/homepage.png" width="900">
 
-Example:
+---
 
-``` markdown
-![Home](screenshots/home.png)
-```
+### 💺 Seat Selection
+
+<img src="screenshots/seat%20selection.png" width="900">
+
+---
+
+### 🎟️ Booking Confirmation
+
+<img src="screenshots/booking%20confirmation.png" width="900">
+
+---
+
+### 📖 My Bookings
+
+<img src="screenshots/my%20booking.png" width="900">
+
+---
+
+### 📞 Contact Us
+
+<img src="screenshots/contact.png" width="900">
 
 ------------------------------------------------------------------------
 
