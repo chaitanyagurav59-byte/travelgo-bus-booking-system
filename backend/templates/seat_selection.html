@@ -460,7 +460,8 @@ continueBtn.addEventListener("click", () => {
     window.location.href =
         "/passenger-details?seats=" +
         encodeURIComponent(selectedSeats.join(",")) +
-        "&bus={{ bus[0] }}";
+        "&bus={{ bus[0] }}" +
+        "&journey_date={{ journey_date }}";
 
 });
 </script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -13,9 +14,15 @@
 
 <div class="container mt-5">
 
-    <h2 class="text-center mb-4">
-        My Bookings
-    </h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>My Bookings</h2>
+
+        <a href="/" class="btn btn-primary">
+            Home
+        </a>
+
+    </div>
 
     {% if bookings %}
 
@@ -23,93 +30,101 @@
 
         <div class="card-body">
 
-            <table class="table table-bordered table-hover align-middle">
+            <div class="table-responsive">
 
-                <thead class="table-dark">
+                <table class="table table-bordered table-hover align-middle">
 
-                    <tr>
+                    <thead class="table-dark">
 
-                        <th>Booking ID</th>
-                        <th>Bus</th>
-                        <th>Route</th>
-                        <th>Date</th>
-                        <th>Passenger</th>
-                        <th>Seat</th>
-                        <th>Amount</th>
-                        <th>Payment</th>
-                        <th>Status</th>
-                        <th>Booked On</th>
-                        <th>Action</th>
+                        <tr>
 
-                    </tr>
+                            <th>Booking ID</th>
+                            <th>Bus</th>
+                            <th>Route</th>
+                            <th>Passenger</th>
+                            <th>Seat</th>
+                            <th>Amount</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Booked On</th>
+                            <th>Action</th>
 
-                </thead>
+                        </tr>
 
-                <tbody>
+                    </thead>
 
-                    {% for booking in bookings %}
+                    <tbody>
 
-                    <tr>
+                        {% for booking in bookings %}
 
-                        <td>{{ booking[0] }}</td>
-                        <td>{{ booking[1] }}</td>
-                        <td>{{ booking[2] }} → {{ booking[3] }}</td>
-                        <td>{{ booking[4] }}</td>
-                        <td>{{ booking[5] }}</td>
-                        <td>{{ booking[6] }}</td>
-                        <td>₹{{ booking[7] }}</td>
-                        <td>{{ booking[8] }}</td>
+                        <tr>
 
-                        <td>
+                            <td>{{ booking[0] }}</td>
 
-                            {% if booking[10] == "Confirmed" %}
+                            <td>{{ booking[1] }}</td>
 
-                                <span class="badge bg-success">
-                                    Confirmed
-                                </span>
+                            <td>{{ booking[2] }} → {{ booking[3] }}</td>
 
-                            {% else %}
+                            <td>{{ booking[4] }}</td>
 
-                                <span class="badge bg-danger">
-                                    Cancelled
-                                </span>
+                            <td>{{ booking[5] }}</td>
 
-                            {% endif %}
+                            <td>₹{{ booking[6] }}</td>
 
-                        </td>
+                            <td>{{ booking[7] }}</td>
 
-                        <td>{{ booking[9] }}</td>
+                            <td>
 
-                        <td>
+                                {% if booking[9] == "Confirmed" %}
 
-                            {% if booking[10] == "Confirmed" %}
+                                    <span class="badge bg-success">
+                                        Confirmed
+                                    </span>
 
-                                <a href="/cancel-booking/{{ booking[0] }}"
-                                   class="btn btn-danger btn-sm">
+                                {% else %}
 
-                                    Cancel
+                                    <span class="badge bg-danger">
+                                        Cancelled
+                                    </span>
 
-                                </a>
+                                {% endif %}
 
-                            {% else %}
+                            </td>
 
-                                <button class="btn btn-secondary btn-sm" disabled>
+                            <td>{{ booking[8] }}</td>
 
-                                    Cancelled
+                            <td>
 
-                                </button>
+                                {% if booking[9] == "Confirmed" %}
 
-                            {% endif %}
+                                    <a href="/cancel-booking/{{ booking[0] }}"
+                                       class="btn btn-danger btn-sm">
 
-                        </td>
+                                        Cancel
 
-                    </tr>
+                                    </a>
 
-                    {% endfor %}
+                                {% else %}
 
-                </tbody>
+                                    <button class="btn btn-secondary btn-sm" disabled>
 
-            </table>
+                                        Cancelled
+
+                                    </button>
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
 
@@ -119,7 +134,15 @@
 
     <div class="alert alert-info text-center">
 
-        You don't have any bookings yet.
+        <h5>No bookings found.</h5>
+
+        <p>You haven't booked any buses yet.</p>
+
+        <a href="/" class="btn btn-primary">
+
+            Book a Bus
+
+        </a>
 
     </div>
 
@@ -128,4 +151,5 @@
 </div>
 
 </body>
+
 </html>
